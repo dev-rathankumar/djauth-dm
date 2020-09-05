@@ -1,0 +1,31 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Django Authentication System</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<!-- MATERIAL DESIGN ICONIC FONT -->
+		<link rel="stylesheet" href="{% static 'fonts/material-design-iconic-font/css/material-design-iconic-font.min.css' %}">
+
+		<!-- STYLE CSS -->
+		<link rel="stylesheet" href="{% static 'css/style.css' %}">
+		<script src="{% static 'js/jquery-3.5.1.min.js' %}"></script>
+		<script src="{% static 'js/custom.js' %}"></script>
+	</head>
+
+	<body>
+
+  {% block content %}
+
+  {% endblock %}
+
+  </body>
+</html>
+
+<script type="text/javascript">
+	setTimeout(function(){
+		$('#message').fadeOut('slow');
+	}, 4000)
+</script>

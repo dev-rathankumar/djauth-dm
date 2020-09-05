@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+
+		<div class="wrapper" style="background-image: url('{% static 'images/bg-registration-form-1.jpg' %}');">
+			<div class="inner">
+				<div class="image-holder">
+					<img src="{% static 'images/registration-form-1.jpg' %}" alt="">
+				</div>
+        <div class="image-holder">
+          <ul>
+            <li><a href="{% url 'dashboard' %}">Dashboard</a></li>
+            <li><a class="active" href="{% url 'editprofile' %}">Edit Profile</a></li>
+            <li><a href="javascript:{document.getElementById('logout').submit()}">Logout</a>
+                    <form action="{% url 'logout' %}" id="logout" method="POST" style="padding-top:0;">
+                      {% csrf_token %}
+                      <input type="hidden">
+                    </form>
+            </li>
+          </ul>
+    				<form action="{% url 'editprofile' %}" method="POST" style="width:100%;">
+    					{% csrf_token %}
+    					{% include 'alerts.html' %}
+    					<h3>Edit Profile</h3>
+              <input type="hidden" name="user_id" value="{{user.id}}">
+    					<div class="form-group">
+    						<input type="text" placeholder="First Name" name="first_name" value="{{user.first_name}}" class="form-control" required>
+    						<input type="text" placeholder="Last Name" name="last_name" value="{{user.last_name}}" class="form-control" required>
+    					</div>
+    					<div class="form-wrapper">
+    						<input type="text" placeholder="Username" name="username" value="{{user.username}}" class="form-control" required>
+    						<i class="zmdi zmdi-account"></i>
+    					</div>
+    					<div class="form-wrapper">
+    						<input type="text" placeholder="Email Address" name="email" value="{{user.email}}" class="form-control" required>
+    						<i class="zmdi zmdi-email"></i>
+    					</div>
+    					<!-- <div class="form-wrapper">
+    						<input type="password" placeholder="Password" name="password" class="form-control" id="txtPassword">
+    						<i class="zmdi zmdi-lock"></i>
+    					</div>
+    					<div id="strengthMessage"></div>
+    					<div class="form-wrapper">
+    						<input type="password" placeholder="Confirm Password" name="confirm_password" class="form-control">
+    						<i class="zmdi zmdi-lock"></i>
+    					</div> -->
+    					<button>Update
+    						<i class="zmdi zmdi-arrow-right"></i>
+    					</button>
+              <br><a href="{% url 'changepassword' %}">Change Password</a>
+    				</form>
+        </div>
+
+			</div>
+		</div>
+
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load static %}
+  <div class="wrapper" style="background-image: url('{% static 'images/bg-registration-form-1.jpg' %}');">
+			<div class="inner">
+				<div class="image-holder">
+					<img src="{% static 'images/registration-form-1.jpg' %}" alt="">
+				</div>
+        <div class="image-holder">
+          <ul>
+            <li><a class="active" href="#">Dashboard</a></li>
+            <li><a href="{% url 'editprofile' %}">Edit Profile</a></li>
+            <li><a href="javascript:{document.getElementById('logout').submit()}">Logout</a>
+                    <form action="{% url 'logout' %}" id="logout" method="POST" style="padding-top: 0;">
+                      {% csrf_token %}
+                      <input type="hidden">
+                    </form>
+            </li>
+          </ul>
+          {% include 'alerts.html' %}
+          <br>
+				  <h3>Dashboard</h3>
+          <div style="padding:15px;">
+            <p>Logged in as <span><a href="{% url 'editprofile' %}"><strong>{{user.first_name}} {{user.last_name}}</strong></a></span>.<br>Not <strong>{{user.first_name}} {{user.last_name}}</strong>?
+              <span><a href="javascript:{document.getElementById('logout').submit()}">Logout</a></span></p>
+              <form action="{% url 'logout' %}" id="logout" method="POST" style="padding-top: 0;">
+                {% csrf_token %}
+                <input type="hidden">
+              </form>
+          </div>
+				</div>
+
+			</div>
+		</div>
+
+{% endblock %}

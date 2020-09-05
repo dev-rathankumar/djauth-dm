@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+		<div class="wrapper" style="background-image: url('{% static 'images/bg-registration-form-1.jpg' %}');">
+			<div class="inner">
+				<div class="image-holder">
+					<img src="{% static 'images/registration-form-1.jpg' %}" alt="">
+				</div>
+
+				<div style="margin:auto;padding:auto;">
+          <h3>Django<br>Authentication system</h3>
+					<a href="{% url 'login' %}"><button>Take Me In
+						<i class="zmdi zmdi-arrow-right"></i>
+					</button></a>
+				</div>
+
+			</div>
+		</div>
+{% endblock %}

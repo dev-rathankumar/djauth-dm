@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+
+		<div class="wrapper" style="background-image: url('{% static 'images/bg-registration-form-1.jpg' %}');">
+			<div class="inner">
+				<div class="image-holder">
+					<img src="{% static 'images/registration-form-1.jpg' %}" alt="">
+				</div>
+				<form action="{% url 'register' %}" method="POST">
+					{% csrf_token %}
+					{% include 'alerts.html' %}
+					<h3>Register</h3>
+					<div class="form-group">
+						<input type="text" placeholder="First Name" name="first_name" class="form-control" required>
+						<input type="text" placeholder="Last Name" name="last_name" class="form-control" required>
+					</div>
+					<div class="form-wrapper">
+						<input type="text" placeholder="Username" name="username" class="form-control" required>
+						<i class="zmdi zmdi-account"></i>
+					</div>
+					<div class="form-wrapper">
+						<input type="text" placeholder="Email Address" name="email" class="form-control" required>
+						<i class="zmdi zmdi-email"></i>
+					</div>
+					<div class="form-wrapper">
+						<input type="password" placeholder="Password" name="password" class="form-control" id="txtPassword" required>
+						<i class="zmdi zmdi-lock"></i>
+					</div>
+					<div id="strengthMessage"></div>
+					<div class="form-wrapper">
+						<input type="password" placeholder="Confirm Password" name="confirm_password" class="form-control" required>
+						<i class="zmdi zmdi-lock"></i>
+					</div>
+					<button onclick="return giveAlert()">Register
+						<i class="zmdi zmdi-arrow-right"></i>
+					</button>
+					<!-- <input type="submit" value="Register" onclick="giveAlert()">
+						<i class="zmdi zmdi-arrow-right"></i> -->
+          <br>
+          <p>Already a member? <span><a href="{% url 'login' %}">Login here</a></span></p>
+
+				</form>
+
+			</div>
+		</div>
+
+{% endblock %}
